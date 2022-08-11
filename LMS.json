@@ -1,0 +1,3259 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "imqz7acljc7ye"
+  },
+  "info": {
+    "title": "LMS",
+    "version": "1.0",
+    "summary": "All the endpoints for TE-LMS",
+    "description": "LMS API Endpoints to design inhouse LMS",
+    "contact": {
+      "name": "Abdullah Amjad"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "entertainerlms"
+    }
+  ],
+  "paths": {
+    "/get/profile/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "RegistrationDate": "2022-08-11 13:22:26",
+                      "additionalInformation": "magna ea ",
+                      "countryOfResidence": "AE",
+                      "createDate": "1972-10-11",
+                      "dateOfBirth": "1981-10-01",
+                      "email": "abdullah.a@theentertainerasia.com",
+                      "etUserId": 52001132,
+                      "firstName": "Abdullah",
+                      "gender": "M",
+                      "lastName": "Amjad",
+                      "lmsRegistrationDate": "2015-12-03T19:00:00.0Z",
+                      "memberTier": "Platinum",
+                      "membershipId": "do aute",
+                      "mobileNo": "+971222222222",
+                      "nationality": "AE",
+                      "preferredLanguage": "nostrud qui ",
+                      "referee": "cupidatat",
+                      "status": "enim Duis id labore paria"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The mentioned member does not exist"
+          },
+          "": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-customer-id",
+        "description": ""
+      }
+    },
+    "/update_profile/": {
+      "post": {
+        "summary": "",
+        "operationId": "post-update_profile",
+        "responses": {
+          "200": {
+            "description": "Data Updated Successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 0,
+                      "message": "Profile Updated."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "203": {
+            "description": "Data Updated Successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 0,
+                      "message": "Profile Updated."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "This API will be used to update the profile of a member based on member id. This API should update only those fields which are passed in the update profile API like if we call the update profile API by passing mobile number only then it should update the mobile number field only and it should not set default values to other parameters like country of residence or preferred language . All fields except the following ones can be updated using update profile API.\nAll fields except the following ones can be updated using update profile API:\n•\tExternal user id\n•\tEmail\n•\tReferred by loyalty member Id\n•\tMembership number\n•\tRegistration Date \n",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "first_name": "randomadasinf",
+                    "member_id": "dN46cGUf9c",
+                    "last_name": "a",
+                    "nationality": "AE",
+                    "email": "a@a.com",
+                    "mobile_number": "03244357138",
+                    "date_of_birth": "1996-06-06",
+                    "gender": "F",
+                    "country_of_residence": "UAE"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/oauth/token/": {
+      "post": {
+        "summary": "",
+        "operationId": "post-oauth-token",
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string"
+                    },
+                    "token_type": {
+                      "type": "string"
+                    },
+                    "refresh_token": {
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "type": "integer"
+                    },
+                    "scope": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "access_token": "d8ea8105-b95b-483c-8904-3c92badc4772",
+                      "token_type": "bearer",
+                      "refresh_token": "855d42c4-7d79-4830-a005-6a0f8a977ea2",
+                      "expires_in": 86399,
+                      "scope": "read write trust"
+                    }
+                  }
+                }
+              },
+              "application/octet-stream": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {}
+                  }
+                }
+              },
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": "grant_type:password client_id:my-trusted-client client_secret:secret username:588087304 password:dubai123"
+                  },
+                  "example-2": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "This endpoint will be used to issue a token after authenticating the credentials (will be set up and provided by LMS). This token will be used to in rest of the APIs. This token should have an expiry set when issued.",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "example-1": {
+                  "value": "grant_type:password client_id:my-trusted-client client_secret:secret username:588087304 password:dubai123"
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/enroll/": {
+      "post": {
+        "summary": "",
+        "operationId": "post-enroll",
+        "responses": {
+          "200": {
+            "description": "Member Enrolled Successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "profile": {
+                      "type": "object",
+                      "properties": {
+                        "channel_id": {
+                          "type": "string"
+                        },
+                        "member_id": {
+                          "type": "string"
+                        },
+                        "external_user_id": {
+                          "type": "string"
+                        },
+                        "membership_number": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "first_name": {
+                          "type": "string"
+                        },
+                        "last_name": {
+                          "type": "string"
+                        },
+                        "mobile_number": {
+                          "type": "string"
+                        },
+                        "gender": {
+                          "type": "string"
+                        },
+                        "date_of_birth": {
+                          "type": "string"
+                        },
+                        "nationality": {
+                          "type": "string"
+                        },
+                        "country_of_residence": {
+                          "type": "string"
+                        },
+                        "registration_date": {
+                          "type": "string"
+                        },
+                        "preferred_language": {
+                          "type": "string"
+                        },
+                        "additional_info": {
+                          "type": "object",
+                          "properties": {
+                            "address": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "lms_registration_date": {
+                          "type": "string"
+                        },
+                        "member_tier": {
+                          "type": "string"
+                        },
+                        "lifetime_total_points": {
+                          "type": "integer"
+                        },
+                        "used_points": {
+                          "type": "integer"
+                        },
+                        "expired_points": {
+                          "type": "integer"
+                        },
+                        "points_expiring_next_month": {
+                          "type": "integer"
+                        },
+                        "lifetime_bonus_points": {
+                          "type": "integer"
+                        },
+                        "total_active_points": {
+                          "type": "integer"
+                        },
+                        "total_available_points": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 0,
+                      "message": "success",
+                      "profile": {
+                        "channel_id": "postman",
+                        "member_id": "bqWDDU7g3D",
+                        "external_user_id": "111036",
+                        "membership_number": "111036",
+                        "status": "ACTIVE",
+                        "email": "v4_naeem036@gmail.com",
+                        "first_name": "Naeem",
+                        "last_name": "Ahmed",
+                        "mobile_number": "036036036",
+                        "gender": "M",
+                        "date_of_birth": "1983-09-20",
+                        "nationality": "PK",
+                        "country_of_residence": "AE",
+                        "registration_date": "2020-07-10 09:42:00",
+                        "preferred_language": "EN",
+                        "additional_info": {
+                          "address": "Sports City"
+                        },
+                        "lms_registration_date": "2022-01-21 14:01:38",
+                        "member_tier": "Bronze",
+                        "lifetime_total_points": 0,
+                        "used_points": 0,
+                        "expired_points": 0,
+                        "points_expiring_next_month": 0,
+                        "lifetime_bonus_points": 0,
+                        "total_active_points": 0,
+                        "total_available_points": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Member Enrolled Successfully"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "203": {
+            "description": "Non-Authoritative Information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        },
+        "description": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "external_user_id": {
+                    "type": "string"
+                  },
+                  "country_of_residence": {
+                    "type": "string"
+                  },
+                  "first_name": {
+                    "type": "string"
+                  },
+                  "last_name": {
+                    "type": "string"
+                  },
+                  "membership_number": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "mobile_number": {
+                    "type": "string"
+                  },
+                  "registration_date": {
+                    "type": "string"
+                  },
+                  "nationality": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  },
+                  "date_of_birth": {
+                    "type": "string"
+                  },
+                  "preferred_language": {
+                    "type": "string"
+                  },
+                  "additional_info": {
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "external_user_id": "111036",
+                    "country_of_residence": "AE",
+                    "first_name": "Naeem",
+                    "last_name": "Ahmed",
+                    "membership_number": "111036",
+                    "email": "v4_naeem036@gmail.com",
+                    "mobile_number": "036036036",
+                    "registration_date": "2020-07-10 09:42:00",
+                    "nationality": "PK",
+                    "gender": "M",
+                    "date_of_birth": "1983-09-20",
+                    "preferred_language": "EN",
+                    "additional_info": {
+                      "address": "Sports City"
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "external_user_id": "111036",
+                    "country_of_residence": "AE",
+                    "first_name": "Naeem",
+                    "last_name": "Ahmed",
+                    "membership_number": "111036",
+                    "email": "abdullah-amjad@live.com",
+                    "mobile_number": "036036036",
+                    "registration_date": "2020-07-10 09:42:00",
+                    "nationality": "AE",
+                    "gender": "M",
+                    "date_of_birth": "1983-09-20",
+                    "preferred_language": "en",
+                    "additional_info": {
+                      "address": "Sports City"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getPoints/": {
+      "post": {
+        "summary": "",
+        "operationId": "post-getPoints",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "point_summary": {
+                      "type": "object",
+                      "properties": {
+                        "lifetime_total_points": {
+                          "type": "number"
+                        },
+                        "lifetime_bonus_points": {
+                          "type": "integer"
+                        },
+                        "used_points": {
+                          "type": "integer"
+                        },
+                        "expired_points": {
+                          "type": "integer"
+                        },
+                        "points_expiring_next_month": {
+                          "type": "integer"
+                        },
+                        "total_active_points": {
+                          "type": "number"
+                        },
+                        "total_available_points": {
+                          "type": "number"
+                        },
+                        "point_to_AED": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 0,
+                      "message": "success",
+                      "point_summary": {
+                        "lifetime_total_points": 2213.81,
+                        "lifetime_bonus_points": 0,
+                        "used_points": 1897,
+                        "expired_points": 0,
+                        "points_expiring_next_month": 0,
+                        "total_active_points": 316.81,
+                        "total_available_points": 316.81,
+                        "point_to_AED": 8.71
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "member_id": "mAnWqGQnD8",
+                    "business_category": "retail",
+                    "business_trigger": "retail_dining_entertainment"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": "This API will return the points summary along with points AED value and minimum points which can be redeemed based on the asset type and business trigger category. As earn and burn rates will be different based on the asset type and underlying category so this API will provide response according to the input parameters (asset type and business trigger) and configured burn rates for each business trigger.\n\n•\tPoints Summary (lifetime total points, used points, expired points, points expiring next month, total active points, total available points)\no\tlifetime total points – points earned throughout the journey\no\tused points – points burned/used throughout the journey\no\texpired points – points expired throughout the journey\no\tpoints expiring next month – points which are going to be expired in next month\no\ttotal active points – total points which are remaining\no\ttotal available points – total points which are available to be burned\n"
+      }
+    },
+    "/getTransactions/": {
+      "post": {
+        "summary": "",
+        "operationId": "post-getTransactions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": 0,
+                      "message": "success",
+                      "transactions": {
+                        "member_id": "2sJVlpvxkt",
+                        "transaction_type": "ALL",
+                        "earn_transactions": [
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O22755436",
+                            "earn_transaction_id": "ET_7GKIVLOVDRMH5",
+                            "external_transaction_id": "32GMQUSTQU",
+                            "earned_points": 9.18,
+                            "amount": 22.96,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-11 13:55:00"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O21419930",
+                            "earn_transaction_id": "ET_6RBBKD6N1IMTY",
+                            "external_transaction_id": "CLDHAZFKEI",
+                            "earned_points": 120,
+                            "amount": 300,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-11 13:54:59"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23902248",
+                            "earn_transaction_id": "ET_ENDST9NYTNJW3",
+                            "external_transaction_id": "7QU2ZYVZDO",
+                            "earned_points": 12.8,
+                            "amount": 32,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-11 12:58:31"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "HOSPITALITY",
+                            "business_trigger": "HOSPITALITY_FNB",
+                            "concept_id": "golf_fnb_Roots_bar",
+                            "earn_transaction_id": "ET_SLAYTK7VGYGB9",
+                            "external_transaction_id": "93RZDNHQZR",
+                            "earned_points": 383,
+                            "amount": 383,
+                            "earn_rate": 1,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-10 19:55:26"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23902154",
+                            "earn_transaction_id": "ET_VNZYA9KQGWI4M",
+                            "external_transaction_id": "AF3TETCJ1G",
+                            "earned_points": 18.4,
+                            "amount": 46,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-09 16:55:12"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O21419930",
+                            "earn_transaction_id": "ET_USIC2WOGMVHXZ",
+                            "external_transaction_id": "8KGXBW37AT",
+                            "earned_points": 34,
+                            "amount": 85,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-09 13:55:19"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23902526",
+                            "earn_transaction_id": "ET_P36IZ799B4ONV",
+                            "external_transaction_id": "5VJLUGSCQV",
+                            "earned_points": 13.04,
+                            "amount": 32.6,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-07 18:58:34"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23902154",
+                            "earn_transaction_id": "ET_JDMOYVFCDDFAN",
+                            "external_transaction_id": "CYAJ2OJBLF",
+                            "earned_points": 18.4,
+                            "amount": 46,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-07 14:55:10"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23897763",
+                            "earn_transaction_id": "ET_KT2P21VTWPRYM",
+                            "external_transaction_id": "HAORN3STRZ",
+                            "earned_points": 15.1,
+                            "amount": 37.75,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-05 16:58:45"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23902154",
+                            "earn_transaction_id": "ET_VBZHZ7ZNROIBP",
+                            "external_transaction_id": "7CHTSDTNZ2",
+                            "earned_points": 18.8,
+                            "amount": 47,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-05 15:55:09"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23897763",
+                            "earn_transaction_id": "ET_PF5HER1OW7GWO",
+                            "external_transaction_id": "E1ARDEPKSZ",
+                            "earned_points": 54.8,
+                            "amount": 137,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-05 14:55:25"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23902154",
+                            "earn_transaction_id": "ET_GDVHPIFM6OERR",
+                            "external_transaction_id": "GGJLXVGNMT",
+                            "earned_points": 18.8,
+                            "amount": 47,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-08-03 12:58:32"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23902681",
+                            "earn_transaction_id": "ET_BCP0HXU2BNWMP",
+                            "external_transaction_id": "EYITSNMFLL",
+                            "earned_points": 95.34,
+                            "amount": 238.35,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-31 16:58:43"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23902526",
+                            "earn_transaction_id": "ET_WZ5B5K76TMBHS",
+                            "external_transaction_id": "5LVPDWDQBD",
+                            "earned_points": 9.7,
+                            "amount": 24.25,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-30 13:55:19"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23900947",
+                            "earn_transaction_id": "ET_ZYGUEOZYWTQ6P",
+                            "external_transaction_id": "YK5ZP1ACT8",
+                            "earned_points": 121.2,
+                            "amount": 303,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-30 04:55:05"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23897763",
+                            "earn_transaction_id": "ET_DGQAB7D5XCKRG",
+                            "external_transaction_id": "57V6BZY8LQ",
+                            "earned_points": 7.7,
+                            "amount": 19.25,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-30 04:00:14"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23902419",
+                            "earn_transaction_id": "ET_JYXPYULGDHMQN",
+                            "external_transaction_id": "JXWRZFICTJ",
+                            "earned_points": 21.9,
+                            "amount": 54.76,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-29 16:58:33"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23915213",
+                            "earn_transaction_id": "ET_NLOT07W2PF1ZR",
+                            "external_transaction_id": "DGS8MOCB7T",
+                            "earned_points": 8.16,
+                            "amount": 20.41,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-29 16:55:13"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23902611",
+                            "earn_transaction_id": "ET_KNGUFZ1WCCQRW",
+                            "external_transaction_id": "GSX35LBETU",
+                            "earned_points": 29.6,
+                            "amount": 74,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-28 16:55:12"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23924376",
+                            "earn_transaction_id": "ET_RFUZHUHPI5PR2",
+                            "external_transaction_id": "5YPF3FCPJR",
+                            "earned_points": 24.6,
+                            "amount": 61.5,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-27 12:58:30"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23926661",
+                            "earn_transaction_id": "ET_GJGYR4KN4N2VN",
+                            "external_transaction_id": "XPTKYBVF4K",
+                            "earned_points": 25.2,
+                            "amount": 63,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-21 20:56:01"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23901851",
+                            "earn_transaction_id": "ET_UGIQSHYQ5R2AB",
+                            "external_transaction_id": "IRMB3B3FQU",
+                            "earned_points": 139.6,
+                            "amount": 349,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-21 17:58:38"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23901492",
+                            "earn_transaction_id": "ET_EMK5AN1FVPYIX",
+                            "external_transaction_id": "EMM1XRVWT4",
+                            "earned_points": 97.81,
+                            "amount": 244.53,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-21 16:55:26"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23897763",
+                            "earn_transaction_id": "ET_RNXDVVQUVFFDG",
+                            "external_transaction_id": "SVK7BZRMLA",
+                            "earned_points": 3.2,
+                            "amount": 8,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-21 08:55:55"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23902248",
+                            "earn_transaction_id": "ET_MAO2COCVWTUKB",
+                            "external_transaction_id": "SC0GKNV4VU",
+                            "earned_points": 6.4,
+                            "amount": 16,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-18 15:55:52"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23926661",
+                            "earn_transaction_id": "ET_JOXUXFQQ0F2G2",
+                            "external_transaction_id": "ARJTOHIN6Y",
+                            "earned_points": 25.2,
+                            "amount": 63,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-16 16:59:08"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23914110",
+                            "earn_transaction_id": "ET_GXMZQHAXXCUMH",
+                            "external_transaction_id": "3GQKJQDQBH",
+                            "earned_points": 225,
+                            "amount": 562.5,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-16 06:56:02"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23912889",
+                            "earn_transaction_id": "ET_HILET3WHJXG2H",
+                            "external_transaction_id": "QGTLHKUJA2",
+                            "earned_points": 42.5,
+                            "amount": 106.25,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-16 04:55:58"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23901494",
+                            "earn_transaction_id": "ET_IQBICPOOOX1XE",
+                            "external_transaction_id": "ASTZFKIZS9",
+                            "earned_points": 134,
+                            "amount": 335,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-16 03:56:02"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23897763",
+                            "earn_transaction_id": "ET_8HYGGTAAG4NDX",
+                            "external_transaction_id": "9AI8P22RHE",
+                            "earned_points": 15.2,
+                            "amount": 38,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-15 03:56:39"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23897763",
+                            "earn_transaction_id": "ET_YILAHZRWAXWMF",
+                            "external_transaction_id": "T1YYQOULUA",
+                            "earned_points": 8.2,
+                            "amount": 20.5,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-14 17:59:13"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23901791",
+                            "earn_transaction_id": "ET_4IKFWRGSDDIEC",
+                            "external_transaction_id": "CVUSDQ4IRC",
+                            "earned_points": 104.4,
+                            "amount": 261.01,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-12 22:00:10"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23902526",
+                            "earn_transaction_id": "ET_VASNXMMGANMMI",
+                            "external_transaction_id": "Z8XID90UNU",
+                            "earned_points": 10.54,
+                            "amount": 26.35,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-08 12:58:37"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23902330",
+                            "earn_transaction_id": "ET_2K1XYLBQWZECI",
+                            "external_transaction_id": "0U7AEJCKT8",
+                            "earned_points": 20,
+                            "amount": 50,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-05 12:58:40"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23902248",
+                            "earn_transaction_id": "ET_YJRY0PH5KKN8Y",
+                            "external_transaction_id": "XDJAKFNK1G",
+                            "earned_points": 14,
+                            "amount": 35,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-07-04 04:56:45"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23902248",
+                            "earn_transaction_id": "ET_GOT1XFBRZNQJB",
+                            "external_transaction_id": "JA0EGLATHP",
+                            "earned_points": 32.8,
+                            "amount": 82,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-06-28 02:57:25"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23901277",
+                            "earn_transaction_id": "ET_UUDT0P2BWKBUN",
+                            "external_transaction_id": "V12SJ4YP1H",
+                            "earned_points": 47.9,
+                            "amount": 119.75,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-06-22 20:56:00"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23901851",
+                            "earn_transaction_id": "ET_Z4TCORU0FPXFL",
+                            "external_transaction_id": "NXMR9DJT0S",
+                            "earned_points": 63.6,
+                            "amount": 159,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-06-20 11:55:46"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O22271770",
+                            "earn_transaction_id": "ET_0YATCL8GG0MOS",
+                            "external_transaction_id": "3YON7WLR5D",
+                            "earned_points": 53.2,
+                            "amount": 133,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-06-16 13:55:51"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23902248",
+                            "earn_transaction_id": "ET_RZVLVVAMWWGZ9",
+                            "external_transaction_id": "XOWWDDV38W",
+                            "earned_points": 33.2,
+                            "amount": 83,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-06-14 03:57:42"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23902478",
+                            "earn_transaction_id": "ET_3XCHYRZNDLYTS",
+                            "external_transaction_id": "MZNMYC7OUI",
+                            "earned_points": 66.8,
+                            "amount": 167,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-06-13 17:56:07"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_SHOPPING",
+                            "concept_id": "O23897773",
+                            "earn_transaction_id": "ET_JBMMWZK56SHFA",
+                            "external_transaction_id": "Z1HDWQB7A0",
+                            "earned_points": 87.5,
+                            "amount": 218.75,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-06-13 11:58:52"
+                          },
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "RETAIL",
+                            "business_trigger": "RETAIL_DINING_ENTERTAINMENT",
+                            "concept_id": "O23900628",
+                            "earn_transaction_id": "ET_AGUSRJG2RWXOT",
+                            "external_transaction_id": "JHXLRNSTWG",
+                            "earned_points": 18.92,
+                            "amount": 47.29,
+                            "earn_rate": 0.4,
+                            "member_tier": "Silver",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [
+                              0
+                            ],
+                            "creation_date": "2022-05-30 17:59:13"
+                          }
+                        ],
+                        "bonuses": [
+                          {
+                            "member_id": "2sJVlpvxkt",
+                            "bonus_type": "UPLOAD_BONUS",
+                            "bonus_points": 33,
+                            "transaction_id": "",
+                            "reason": "UPLOAD BONUS",
+                            "comments": "mastercard retail payment",
+                            "creation_date": "2022-06-28 10:43:32"
+                          },
+                          {
+                            "member_id": "2sJVlpvxkt",
+                            "bonus_type": "UPLOAD_BONUS",
+                            "bonus_points": 115,
+                            "transaction_id": "",
+                            "reason": "UPLOAD BONUS",
+                            "comments": "mastercard retail payment",
+                            "creation_date": "2022-06-28 10:43:32"
+                          },
+                          {
+                            "member_id": "2sJVlpvxkt",
+                            "bonus_type": "UPLOAD_BONUS",
+                            "bonus_points": 68,
+                            "transaction_id": "",
+                            "reason": "UPLOAD BONUS",
+                            "comments": "mastercard retail payment",
+                            "creation_date": "2022-06-28 10:43:32"
+                          },
+                          {
+                            "member_id": "2sJVlpvxkt",
+                            "bonus_type": "UPLOAD_BONUS",
+                            "bonus_points": 91,
+                            "transaction_id": "",
+                            "reason": "UPLOAD BONUS",
+                            "comments": "mastercard retail payment",
+                            "creation_date": "2022-06-28 10:43:32"
+                          },
+                          {
+                            "member_id": "2sJVlpvxkt",
+                            "bonus_type": "UPLOAD_BONUS",
+                            "bonus_points": 227,
+                            "transaction_id": "",
+                            "reason": "UPLOAD BONUS",
+                            "comments": "mastercard retail payment",
+                            "creation_date": "2022-06-14 16:55:04"
+                          },
+                          {
+                            "member_id": "2sJVlpvxkt",
+                            "bonus_type": "UPLOAD_BONUS",
+                            "bonus_points": 51,
+                            "transaction_id": "",
+                            "reason": "UPLOAD BONUS",
+                            "comments": "mastercard retail payment",
+                            "creation_date": "2022-05-09 17:29:36"
+                          },
+                          {
+                            "member_id": "2sJVlpvxkt",
+                            "bonus_type": "UPLOAD_BONUS",
+                            "bonus_points": 46,
+                            "transaction_id": "",
+                            "reason": "UPLOAD BONUS",
+                            "comments": "mastercard retail payment",
+                            "creation_date": "2022-05-09 17:29:36"
+                          },
+                          {
+                            "member_id": "2sJVlpvxkt",
+                            "bonus_type": "UPLOAD_BONUS",
+                            "bonus_points": 365,
+                            "transaction_id": "",
+                            "reason": "UPLOAD BONUS",
+                            "comments": "mastercard retail payment",
+                            "creation_date": "2022-05-09 17:29:36"
+                          }
+                        ],
+                        "burn_transactions": [
+                          {
+                            "channel_id": "CLO",
+                            "member_id": "2sJVlpvxkt",
+                            "email": "barnettad2022@hotmail.com",
+                            "business_category": "Retail",
+                            "business_trigger": "retail_dining_entertainment",
+                            "concept_id": "O23902248",
+                            "redemption_id": "RT_CWPVUNJG86HDH",
+                            "redemption_reference_code": "PR-000-009-738",
+                            "amount": 16,
+                            "burn_rate": 36.36,
+                            "currency": "AED",
+                            "points": 582,
+                            "redemption_mode": "AMOUNT",
+                            "points_balance": 966.86,
+                            "transacton_id": "FFSJSBOL5R",
+                            "date_created": "2022-07-14 15:38:57"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "transactions": {
+                      "type": "object",
+                      "properties": {
+                        "member_id": {
+                          "type": "string"
+                        },
+                        "transaction_type": {
+                          "type": "string"
+                        },
+                        "earn_transactions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "channel_id": {
+                                "type": "string"
+                              },
+                              "member_id": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "business_category": {
+                                "type": "string"
+                              },
+                              "business_trigger": {
+                                "type": "string"
+                              },
+                              "concept_id": {
+                                "type": "string"
+                              },
+                              "earn_transaction_id": {
+                                "type": "string"
+                              },
+                              "external_transaction_id": {
+                                "type": "string"
+                              },
+                              "earned_points": {
+                                "type": "number"
+                              },
+                              "amount": {
+                                "type": [
+                                  "integer",
+                                  "number"
+                                ]
+                              },
+                              "earn_rate": {
+                                "type": "number"
+                              },
+                              "member_tier": {
+                                "type": "string"
+                              },
+                              "tier_updated": {
+                                "type": "boolean"
+                              },
+                              "bonus_points": {
+                                "type": "integer"
+                              },
+                              "referrer_bonus_points": {
+                                "type": "array",
+                                "items": {
+                                  "type": "integer"
+                                }
+                              },
+                              "creation_date": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "bonuses": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "member_id": {
+                                "type": "string"
+                              },
+                              "bonus_type": {
+                                "type": "string"
+                              },
+                              "bonus_points": {
+                                "type": "integer"
+                              },
+                              "transaction_id": {
+                                "type": "string"
+                              },
+                              "reason": {
+                                "type": "string"
+                              },
+                              "comments": {
+                                "type": "string"
+                              },
+                              "creation_date": {
+                                "type": "string"
+                              },
+                              "": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "burn_transactions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "channel_id": {
+                                "type": "string"
+                              },
+                              "member_id": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "business_category": {
+                                "type": "string"
+                              },
+                              "business_trigger": {
+                                "type": "string"
+                              },
+                              "concept_id": {
+                                "type": "string"
+                              },
+                              "redemption_id": {
+                                "type": "string"
+                              },
+                              "redemption_reference_code": {
+                                "type": "string"
+                              },
+                              "amount": {
+                                "type": "integer"
+                              },
+                              "burn_rate": {
+                                "type": "number"
+                              },
+                              "currency": {
+                                "type": "string"
+                              },
+                              "points": {
+                                "type": "integer"
+                              },
+                              "redemption_mode": {
+                                "type": "string"
+                              },
+                              "points_balance": {
+                                "type": "number"
+                              },
+                              "transacton_id": {
+                                "type": "string"
+                              },
+                              "date_created": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "This API will be used to get all the points earn and burn transactions for a member based on member id. This API will have a parameter to filter the results to show only earn, burn or all the transactions.  \nThis API need to return latest 10 transactions (earn/burn) in desc order. \nNote: Each transaction needs to return the request API as well against which points are earned or burned.\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "member_id": "t6QxyHnRUZ",
+                    "transaction_type": "earn"
+                  }
+                },
+                "properties": {
+                  "member_id": {
+                    "type": "string"
+                  },
+                  "transaction_type": {
+                    "type": "string",
+                    "enum": [
+                      "earn",
+                      "burn",
+                      "all"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/doEarn/": {
+      "post": {
+        "summary": "",
+        "operationId": "post-doEarn",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "batch_earn": {
+                      "type": "object",
+                      "properties": {
+                        "success": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "channel_id": {
+                                "type": "string"
+                              },
+                              "member_id": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "business_category": {
+                                "type": "string"
+                              },
+                              "business_trigger": {
+                                "type": "string"
+                              },
+                              "concept_id": {
+                                "type": "string"
+                              },
+                              "earn_transaction_id": {
+                                "type": "string"
+                              },
+                              "external_transaction_id": {
+                                "type": "string"
+                              },
+                              "earned_points": {
+                                "type": "integer"
+                              },
+                              "amount": {
+                                "type": "integer"
+                              },
+                              "earn_rate": {
+                                "type": "number"
+                              },
+                              "member_tier": {
+                                "type": "string"
+                              },
+                              "tier_updated": {
+                                "type": "boolean"
+                              },
+                              "bonus_points": {
+                                "type": "integer"
+                              },
+                              "referrer_bonus_points": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              },
+                              "creation_date": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 0,
+                      "message": "success",
+                      "batch_earn": {
+                        "success": [
+                          {
+                            "channel_id": "postman",
+                            "member_id": "t6QxyHnRUZ",
+                            "email": "testqash0+drop1@gmail.com",
+                            "business_category": "EDUCATION",
+                            "business_trigger": "EDUCATION_ENROLMENT_FEE",
+                            "concept_id": "CL1-AlBateen",
+                            "earn_transaction_id": "ET_6TLVHT9SP5DUF",
+                            "external_transaction_id": "test1aaas23456",
+                            "earned_points": 160,
+                            "amount": 1000,
+                            "earn_rate": 0.16,
+                            "member_tier": "Gold",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [],
+                            "creation_date": "2022-01-21 14:52:03"
+                          },
+                          {
+                            "channel_id": "postman",
+                            "member_id": "t6QxyHnRUZ",
+                            "email": "testqash0+drop1@gmail.com",
+                            "business_category": "EDUCATION",
+                            "business_trigger": "EDUCATION_ENROLMENT_FEE",
+                            "concept_id": "CL1-AlBateen",
+                            "earn_transaction_id": "ET_C3MKQM2PF71WB",
+                            "external_transaction_id": "test1aaaaas23456",
+                            "earned_points": 160,
+                            "amount": 1000,
+                            "earn_rate": 0.16,
+                            "member_tier": "Gold",
+                            "tier_updated": false,
+                            "bonus_points": 0,
+                            "referrer_bonus_points": [],
+                            "creation_date": "2022-01-21 14:52:03"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "description": "This API will be used to credit the points to the member’ account based o transaction value. There can be one general API which can be used for all the assets and JSON payload would help to validate the request for different assets and underlying business categories/triggers or there can be a separate earn API one for each asset.\n\n \n\nTier information in earn API response:\nThe earn API is supposed to return the tier of the user after crediting the points based on transaction value. This tier needs to be based on total spending in past 12 months including current transaction.\n\nFor example, if a user has a total spending of 500 AED only and falls under White tier. If this user makes a transaction of 15,000 AED in asset like education (paid term fee for example) and earn API is called for this transaction, then the API response should return the tier of the user as Silver based on the following tier slabs as total spending will be 15,500 after this transaction which will earn the user Silver tier.\n\n \n\nBronze: AED 0 - 10,000\n\nSilver: AED 10,001 - 25,000\n\nGold: AED 25,001+\n\nPlatinum: Invitation Only",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              },
+              "examples": {
+                "earn-Education": {
+                  "value": [
+                    {
+                      "member_id": "aKJqi11n6Y",
+                      "email": "v4_naeem038@gmail.com",
+                      "business_category": "education",
+                      "business_trigger": "education_term_fee",
+                      "concept_id": "CL1-AlBateen",
+                      "concept_name": "Al Bateen Academy",
+                      "external_transaction_id": "3423424",
+                      "gross_total_amount": "9000",
+                      "net_amount": "9000",
+                      "amount_paid_using_points": "0",
+                      "paid_amount": "9000",
+                      "currency": "AED",
+                      "redemption_reference": "ref_100",
+                      "charge_id": "100",
+                      "description": "no description",
+                      "transaction_datetimew": "2020-07-10 21:16:00",
+                      "school_id": "CL1-AlBateen",
+                      "school_name": "Al Bateen Academy",
+                      "enrolment_id": "ans_100",
+                      "student_id": "100",
+                      "grade": "Grade 01",
+                      "term_number": 2,
+                      "is_student_enrolment_this_year": 0,
+                      "is_progressed_from_primary_to_secondary": 0
+                    }
+                  ]
+                },
+                "earn-retail": {
+                  "value": [
+                    {
+                      "member_id": "aKJqi11n6Y",
+                      "email": "v4_naeem038@gmail.com",
+                      "business_category": "retail",
+                      "business_trigger": "retail_shopping",
+                      "concept_id": "1237",
+                      "concept_name": "Test - Adidas - Yal Mall",
+                      "external_transaction_id": "ret_d0f376",
+                      "gross_total_amount": "100",
+                      "net_amount": "100",
+                      "amount_paid_using_points": "0",
+                      "paid_amount": "10",
+                      "currency": "AED",
+                      "redemption_reference": "ref_100",
+                      "charge_id": "100",
+                      "description": "no description",
+                      "transaction_datetime": "2020-07-11 00:37:00",
+                      "merchant_category": "fashion",
+                      "outlet_id": "1237",
+                      "outlet_name": "Test - Adidas - Yal Mall"
+                    }
+                  ]
+                },
+                "earn-hospitality_fnb": {
+                  "value": [
+                    {
+                      "member_id": "aKJqi11n6Y",
+                      "email": "v4_naeem038@gmail.com",
+                      "business_category": "hospitality",
+                      "business_trigger": "hospitality_fnb",
+                      "concept_id": "yas_rtna_4",
+                      "concept_name": "Blue Grill",
+                      "external_transaction_id": "ssfasd",
+                      "gross_total_amount": "100",
+                      "net_amount": "100",
+                      "amount_paid_using_points": "0",
+                      "paid_amount": "100",
+                      "currency": "AED",
+                      "redemption_reference": "ref_100",
+                      "charge_id": "100",
+                      "description": "no description",
+                      "transaction_datetime": "2020-07-11 00:37:00",
+                      "hotel_id": "yas_rtna",
+                      "hotel_name": "Yas Island Rotana",
+                      "outlet_id": "yas_rtna_4",
+                      "outlet_name": "Blue Grill"
+                    }
+                  ]
+                },
+                "earn-sales": {
+                  "value": [
+                    {
+                      "member_id": "aKJqi11n6Y",
+                      "email": "v4_naeem038@gmail.com",
+                      "business_category": "sales",
+                      "business_trigger": "sales_instalment_payment",
+                      "concept_id": "13082_Ansam",
+                      "concept_name": "Ansam",
+                      "external_transaction_id": "d6g45ddsedffes",
+                      "gross_total_amount": 500000,
+                      "net_amount": 300000,
+                      "amount_paid_using_points": "0",
+                      "paid_amount": 100000,
+                      "currency": "AED",
+                      "redemption_reference": "ref_100",
+                      "charge_id": "100",
+                      "description": "no description",
+                      "transaction_datetime": "2020-07-11 00:37:00",
+                      "community_id": "13082_Ansam",
+                      "community_name": "Ansam",
+                      "sales_order_id": "S145",
+                      "unit_id": "145",
+                      "property_type": "1BHK",
+                      "number_of_instalments": 5,
+                      "property_gross_value": 500000,
+                      "property_net_value": 300000,
+                      "order_date": "2020-01-01",
+                      "instalment_number": 1,
+                      "instalment_due_date": "2020-07-01",
+                      "is_handover_payment": 0
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "description": "The request body of this API may differ as per the business asset. The request parameters against all business assets are documented in the confluence page: \n\nhttps://entertainerproducts.atlassian.net/wiki/spaces/DA/pages/3221979180/DoEarn+API"
+        }
+      }
+    },
+    "/doRedemption": {
+      "post": {
+        "summary": "",
+        "operationId": "post-doRedemption",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "redemption": {
+                      "type": "object",
+                      "properties": {
+                        "channel_id": {
+                          "type": "string"
+                        },
+                        "member_id": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "concept_id": {
+                          "type": "string"
+                        },
+                        "redemption_id": {
+                          "type": "string"
+                        },
+                        "redemption_reference_code": {
+                          "type": "string"
+                        },
+                        "amount": {
+                          "type": "number"
+                        },
+                        "burn_rate": {
+                          "type": "number"
+                        },
+                        "currency": {
+                          "type": "string"
+                        },
+                        "points": {
+                          "type": "number"
+                        },
+                        "redemption_mode": {
+                          "type": "string"
+                        },
+                        "points_balance": {
+                          "type": "number"
+                        },
+                        "date_created": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 0,
+                      "message": "success",
+                      "redemption": {
+                        "channel_id": "postman",
+                        "member_id": "y4zbsmKyZ8",
+                        "email": "testqa6mi+adr08@gmail.com",
+                        "concept_id": "O21419840",
+                        "redemption_id": "RT_YCA36J64DVIEZ",
+                        "redemption_reference_code": "PR-000-001-630",
+                        "amount": 1.19,
+                        "burn_rate": 36.36,
+                        "currency": "AED",
+                        "points": 43.27,
+                        "redemption_mode": "AMOUNT",
+                        "points_balance": 0.29,
+                        "date_created": "2022-01-21 14:54:19"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "This API will be used to burn the points. This API needs to work in two modes which is either burn points by AED value or burn by number of points. This information will be available in redemption mode parameter as mentioned below.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "member_id": {
+                    "type": "string"
+                  },
+                  "business_category": {
+                    "type": "string"
+                  },
+                  "business_trigger": {
+                    "type": "string"
+                  },
+                  "concept_id": {
+                    "type": "string"
+                  },
+                  "transacton_id": {
+                    "type": "string"
+                  },
+                  "redemption_mode": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "number"
+                  },
+                  "currency": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "member_id": "y4zbsmKyZ8",
+                    "business_category": "retail",
+                    "business_trigger": "retail_dining_entertainment",
+                    "concept_id": "O21419840",
+                    "transacton_id": "sdassdshkf2",
+                    "redemption_mode": "amount",
+                    "value": 1.19,
+                    "currency": "AED",
+                    "description": "abc"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getRedemption/{redemptionId}": {
+      "get": {
+        "summary": "get Redemption Detail endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "redemption": {
+                      "type": "object",
+                      "properties": {
+                        "channel_id": {
+                          "type": "string"
+                        },
+                        "member_id": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "concept_id": {
+                          "type": "string"
+                        },
+                        "redemption_id": {
+                          "type": "string"
+                        },
+                        "redemption_reference_code": {
+                          "type": "string"
+                        },
+                        "amount": {
+                          "type": "integer"
+                        },
+                        "burn_rate": {
+                          "type": "number"
+                        },
+                        "currency": {
+                          "type": "string"
+                        },
+                        "points": {
+                          "type": "integer"
+                        },
+                        "redemption_mode": {
+                          "type": "string"
+                        },
+                        "date_created": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 0,
+                      "message": "success",
+                      "redemption": {
+                        "channel_id": "CLO",
+                        "member_id": "Z856g04gOu",
+                        "email": "manesh.batra@icnuae.com",
+                        "concept_id": "O23901760",
+                        "redemption_id": "RT_ZJWORLZX3QOQS",
+                        "redemption_reference_code": "PR-000-010-463",
+                        "amount": 20,
+                        "burn_rate": 36.36,
+                        "currency": "AED",
+                        "points": 728,
+                        "redemption_mode": "AMOUNT",
+                        "date_created": "2022-08-09 15:43:04"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-getRedemption",
+        "description": "This API needs to return the details of the points redemption based on redemption id.\n\nInput parameters\nredemption id\n\nExpected output\nmember_id\nemail\nredemption id\nredemption reference code\namount\ncurrency\nconcept id\nburn rate\npoints\nredemption_mode (points, amount)\ndate_created\nredemption_api_request – json object having complete redeem/burn points API request\n"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "redemptionId",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/getEarnTransaction/{earnId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "earnId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-getEarnTransaction-earnId",
+        "description": "This API needs to return the details of the earn points API call based on the earn transaction id\n\nInput parameters\nearn transaction id\nExpected output\nThe response will be similar what is available in earn API response except is member tier changed flag.\n"
+      }
+    },
+    "/doRefund/": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-doRefund"
+      },
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "operationId": "post-doRefund",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "refund": {
+                      "type": "object",
+                      "properties": {
+                        "concept_id": {
+                          "type": "string"
+                        },
+                        "channel_id": {
+                          "type": "string"
+                        },
+                        "member_id": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "value": {
+                          "type": "integer"
+                        },
+                        "currency": {
+                          "type": "string"
+                        },
+                        "points": {
+                          "type": "integer"
+                        },
+                        "refund_points_mode": {
+                          "type": "string"
+                        },
+                        "points_balance": {
+                          "type": "number"
+                        },
+                        "date_created": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "status": 0,
+                      "message": "success",
+                      "refund": {
+                        "concept_id": "CL1-AlBateen",
+                        "channel_id": "postman",
+                        "member_id": "t6QxyHnRUZ",
+                        "email": "testqash0+drop1@gmail.com",
+                        "value": 1000,
+                        "currency": "AED",
+                        "points": -160,
+                        "refund_points_mode": "amount",
+                        "points_balance": 1273373.37,
+                        "date_created": "2022-01-21 15:13:29"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "status": 0,
+                      "message": "success",
+                      "refund": {
+                        "concept_id": "CL1-AlBateen",
+                        "channel_id": "postman",
+                        "member_id": "t6QxyHnRUZ",
+                        "email": "testqash0+drop1@gmail.com",
+                        "value": 1000,
+                        "currency": "AED",
+                        "points": -160,
+                        "refund_points_mode": "amount",
+                        "points_balance": 1273373.37,
+                        "date_created": "2022-01-21 15:13:29"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "This API will be used to refund the points based on AED value or by number of points.\n\nInput parameters\nmember id\nasset category\nbusiness trigger \ntransaction_id – it can be either external transaction id used when points were earned or a new transaction id altogether\nrefund_points_mode (points, amount)\ncurrency\ndescription\n\nExpected output\nmember_id\nemail\namount\ncurrency\npoints – the number of points reversed/deducted\nmode (points, amount)\npoints_balance\ndate_created\n\nNote: The transaction id can be either external transaction id used when points were earned or a new transaction id altogether. For now, let’s not build any business logic on top of it. But in case we enforce that refund can only happen against a transaction against which points were earned then we will let you know if that is the case in next couple of days. If confirmation doesn’t come back then consider that it can be a different transaction id requiring no validation on transaction id. Refer to one use case mentioned below.\nSample use case of refund\n\n•\tAssume 1AED equals to 1Points for this use case\n•\tA new user (with no points accrued so far) shops for some items at some store for 100AED on May 01\n•\tTransaction comes to the ENTERTAINER instantly with transaction id as TXN_001.\n•\tTEB passes this transaction to LMS with expectation to hold these points until X days like (15 days). Once the 15 days are passed, LMS releases these points and these gets available to the user.\n•\tOn May 05 the same user goes to the shop to make a refund (partial/full) say a partial refund of 25AED.\n•\tSystem logs a new entry into the system with a new transaction id like TXN_0009 and sets its type as refund but it is not linked to the primary transaction which is TXN_001.\n•\tThis refund transaction comes to TEB instantly and TEB calls LMS to reverse the points. As there is no association with actual transaction and transaction to be reversed, LMS will reverse the points and balance will go in negative like -25 points in case it was as partial refund of 25AED.\n•\tOn May 15 when 15 days are passed LMS releases the points (for 100 AED transaction) and balance now comes to 75 points.\n\nIs this the right user journey regarding refunds? Or We need to hold the transactions for 15 days and only pass the transactions to LMS when they are eligible to get the points.\nFor all other assets from Leasing, Sales, Education, Maintenance and Hospitality we are assuming that transactions will come to us when the payment is realized and points are to be credited immediately as soon as we receive the transaction details. So, we need to inform Aldar about the same.\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "member_id": {
+                    "type": "string"
+                  },
+                  "business_category": {
+                    "type": "string"
+                  },
+                  "business_trigger": {
+                    "type": "string"
+                  },
+                  "transaction_id": {
+                    "type": "string"
+                  },
+                  "refund_points_mode": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  },
+                  "currency": {
+                    "type": "string"
+                  },
+                  "concept_id": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "member_id": "t6QxyHnRUZ",
+                    "business_category": "education",
+                    "business_trigger": "education_enrolment_fee",
+                    "transaction_id": "test123456-refund",
+                    "refund_points_mode": "amount",
+                    "value": "1000",
+                    "currency": "AED",
+                    "concept_id": "CL1-AlBateen",
+                    "description": "refund testing by ABDULLAH"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "member_id": "t6QxyHnRUZ",
+                    "business_category": "education",
+                    "business_trigger": "education_enrolment_fee",
+                    "transaction_id": "test123456-refund1",
+                    "refund_points_mode": "amount",
+                    "value": "1000",
+                    "currency": "AED",
+                    "concept_id": "CL1-AlBateen",
+                    "description": "refund testing by ABDULLAH"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getConfig/": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "earn_rate": {
+                      "type": "object",
+                      "properties": {
+                        "hospitality_spa": {
+                          "type": "integer"
+                        },
+                        "education_miscellaneous_charges": {
+                          "type": "number"
+                        },
+                        "leasing_community_facilities": {
+                          "type": "number"
+                        },
+                        "maintenance_generic": {
+                          "type": "number"
+                        },
+                        "point_transfer_internal": {
+                          "type": "integer"
+                        },
+                        "education_generic": {
+                          "type": "number"
+                        },
+                        "education_term_fee": {
+                          "type": "number"
+                        },
+                        "leasing_instalment_payment": {
+                          "type": "number"
+                        },
+                        "hospitality_golf_course": {
+                          "type": "number"
+                        },
+                        "charity_maan_general": {
+                          "type": "integer"
+                        },
+                        "leasing_services": {
+                          "type": "number"
+                        },
+                        "sales": {
+                          "type": "object",
+                          "properties": {
+                            "slabs": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "range": {
+                                    "type": "object",
+                                    "properties": {
+                                      "min": {
+                                        "type": "integer"
+                                      },
+                                      "max": {
+                                        "type": [
+                                          "integer",
+                                          "number"
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "earn_rate": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "education_enrolment_fee": {
+                          "type": "number"
+                        },
+                        "hospitality_fnb": {
+                          "type": "integer"
+                        },
+                        "education_services_fee": {
+                          "type": "number"
+                        },
+                        "leasing_generic": {
+                          "type": "number"
+                        },
+                        "retail_dining_entertainment": {
+                          "type": "number"
+                        },
+                        "charity_red_crescent_general": {
+                          "type": "integer"
+                        },
+                        "hospitality_sports_facilities": {
+                          "type": "integer"
+                        },
+                        "retail_shopping": {
+                          "type": "number"
+                        },
+                        "hospitality_generic": {
+                          "type": "integer"
+                        },
+                        "charity_reach_general": {
+                          "type": "integer"
+                        },
+                        "education_activities_fee": {
+                          "type": "number"
+                        },
+                        "hospitality_farl": {
+                          "type": "number"
+                        },
+                        "maintenance_instalment_payment": {
+                          "type": "number"
+                        },
+                        "hospitality_sadiyat_club": {
+                          "type": "number"
+                        }
+                      }
+                    },
+                    "burn_rate": {
+                      "type": "object",
+                      "properties": {
+                        "hospitality_spa": {
+                          "type": "integer"
+                        },
+                        "education_miscellaneous_charges": {
+                          "type": "integer"
+                        },
+                        "sales_generic": {
+                          "type": "integer"
+                        },
+                        "leasing_community_facilities": {
+                          "type": "integer"
+                        },
+                        "maintenance_generic": {
+                          "type": "integer"
+                        },
+                        "point_transfer_internal": {
+                          "type": "integer"
+                        },
+                        "education_generic": {
+                          "type": "integer"
+                        },
+                        "sales_service_charges": {
+                          "type": "integer"
+                        },
+                        "education_term_fee": {
+                          "type": "integer"
+                        },
+                        "sales_instalment_payment": {
+                          "type": "integer"
+                        },
+                        "leasing_instalment_payment": {
+                          "type": "integer"
+                        },
+                        "hospitality_golf_course": {
+                          "type": "integer"
+                        },
+                        "charity_maan_general": {
+                          "type": "integer"
+                        },
+                        "leasing_services": {
+                          "type": "integer"
+                        },
+                        "education_enrolment_fee": {
+                          "type": "integer"
+                        },
+                        "hospitality_fnb": {
+                          "type": "integer"
+                        },
+                        "education_services_fee": {
+                          "type": "integer"
+                        },
+                        "leasing_generic": {
+                          "type": "integer"
+                        },
+                        "retail_dining_entertainment": {
+                          "type": "number"
+                        },
+                        "charity_red_crescent_general": {
+                          "type": "integer"
+                        },
+                        "hospitality_sports_facilities": {
+                          "type": "integer"
+                        },
+                        "retail_shopping": {
+                          "type": "number"
+                        },
+                        "hospitality_generic": {
+                          "type": "integer"
+                        },
+                        "charity_reach_general": {
+                          "type": "integer"
+                        },
+                        "education_activities_fee": {
+                          "type": "integer"
+                        },
+                        "hospitality_farl": {
+                          "type": "number"
+                        },
+                        "maintenance_instalment_payment": {
+                          "type": "integer"
+                        },
+                        "hospitality_sadiyat_club": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "burn_threshold_aed": {
+                      "type": "object",
+                      "properties": {
+                        "Retail": {
+                          "type": "integer"
+                        },
+                        "Hospitality": {
+                          "type": "integer"
+                        },
+                        "Sales": {
+                          "type": "integer"
+                        },
+                        "Point Transfer": {
+                          "type": "integer"
+                        },
+                        "Education": {
+                          "type": "integer"
+                        },
+                        "Leasing": {
+                          "type": "integer"
+                        },
+                        "Maintenance": {
+                          "type": "integer"
+                        },
+                        "Charity": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "tiers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer"
+                          },
+                          "tier_code": {
+                            "type": "integer"
+                          },
+                          "tier_title": {
+                            "type": "string"
+                          },
+                          "range_from": {
+                            "type": [
+                              "integer",
+                              "number"
+                            ]
+                          },
+                          "range_to": {
+                            "type": "integer"
+                          },
+                          "comment": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "earn_rate": {
+                        "hospitality_spa": 2,
+                        "education_miscellaneous_charges": 0.16,
+                        "leasing_community_facilities": 0.2,
+                        "maintenance_generic": 0.4,
+                        "point_transfer_internal": 0,
+                        "education_generic": 0.16,
+                        "education_term_fee": 0.16,
+                        "leasing_instalment_payment": 0.2,
+                        "hospitality_golf_course": 0.2,
+                        "charity_maan_general": 0,
+                        "leasing_services": 0.2,
+                        "sales": {
+                          "slabs": [
+                            {
+                              "range": {
+                                "min": 1,
+                                "max": 399999.99
+                              },
+                              "earn_rate": 0.02
+                            },
+                            {
+                              "range": {
+                                "min": 400000,
+                                "max": 1000000.99
+                              },
+                              "earn_rate": 0.02
+                            },
+                            {
+                              "range": {
+                                "min": 1000001,
+                                "max": 2000000.99
+                              },
+                              "earn_rate": 0.02
+                            },
+                            {
+                              "range": {
+                                "min": 2000001,
+                                "max": 3000000.99
+                              },
+                              "earn_rate": 0.02
+                            },
+                            {
+                              "range": {
+                                "min": 3000001,
+                                "max": 4000000.99
+                              },
+                              "earn_rate": 0.02
+                            },
+                            {
+                              "range": {
+                                "min": 4000001,
+                                "max": 1000000000000000000
+                              },
+                              "earn_rate": 0.02
+                            }
+                          ]
+                        },
+                        "education_enrolment_fee": 0.16,
+                        "hospitality_fnb": 1,
+                        "education_services_fee": 0.16,
+                        "leasing_generic": 0.2,
+                        "retail_dining_entertainment": 0.4,
+                        "charity_red_crescent_general": 0,
+                        "hospitality_sports_facilities": 2,
+                        "retail_shopping": 0.4,
+                        "hospitality_generic": 0,
+                        "charity_reach_general": 0,
+                        "education_activities_fee": 0.16,
+                        "hospitality_farl": 0.33,
+                        "maintenance_instalment_payment": 0.4,
+                        "hospitality_sadiyat_club": 0.1
+                      },
+                      "burn_rate": {
+                        "hospitality_spa": 25,
+                        "education_miscellaneous_charges": 25,
+                        "sales_generic": 25,
+                        "leasing_community_facilities": 25,
+                        "maintenance_generic": 25,
+                        "point_transfer_internal": 1,
+                        "education_generic": 25,
+                        "sales_service_charges": 25,
+                        "education_term_fee": 25,
+                        "sales_instalment_payment": 25,
+                        "leasing_instalment_payment": 25,
+                        "hospitality_golf_course": 25,
+                        "charity_maan_general": 1,
+                        "leasing_services": 25,
+                        "education_enrolment_fee": 25,
+                        "hospitality_fnb": 25,
+                        "education_services_fee": 25,
+                        "leasing_generic": 25,
+                        "retail_dining_entertainment": 36.36,
+                        "charity_red_crescent_general": 1,
+                        "hospitality_sports_facilities": 25,
+                        "retail_shopping": 36.36,
+                        "hospitality_generic": 25,
+                        "charity_reach_general": 1,
+                        "education_activities_fee": 25,
+                        "hospitality_farl": 36.36,
+                        "maintenance_instalment_payment": 25,
+                        "hospitality_sadiyat_club": 25
+                      },
+                      "burn_threshold_aed": {
+                        "Retail": 1,
+                        "Hospitality": 1,
+                        "Sales": 1,
+                        "Point Transfer": 1,
+                        "Education": 1,
+                        "Leasing": 1,
+                        "Maintenance": 1,
+                        "Charity": 1
+                      },
+                      "tiers": [
+                        {
+                          "id": 1,
+                          "tier_code": 1,
+                          "tier_title": "Bronze",
+                          "range_from": 0,
+                          "range_to": 10000
+                        },
+                        {
+                          "id": 2,
+                          "tier_code": 2,
+                          "tier_title": "Silver",
+                          "range_from": 10000.01,
+                          "range_to": 25000
+                        },
+                        {
+                          "id": 3,
+                          "tier_code": 3,
+                          "tier_title": "Gold",
+                          "range_from": 25000.01,
+                          "range_to": 9999999999
+                        },
+                        {
+                          "id": 4,
+                          "tier_code": 4,
+                          "tier_title": "Platinum",
+                          "range_from": -1,
+                          "range_to": -1,
+                          "comment": "Invite Only"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "earn_rate": {
+                        "hospitality_spa": 2,
+                        "education_miscellaneous_charges": 0.16,
+                        "leasing_community_facilities": 0.2,
+                        "maintenance_generic": 0.4,
+                        "point_transfer_internal": 0,
+                        "education_generic": 0.16,
+                        "education_term_fee": 0.16,
+                        "leasing_instalment_payment": 0.2,
+                        "hospitality_golf_course": 0.2,
+                        "charity_maan_general": 0,
+                        "leasing_services": 0.2,
+                        "sales": {
+                          "slabs": [
+                            {
+                              "range": {
+                                "min": 1,
+                                "max": 399999.99
+                              },
+                              "earn_rate": 0.02
+                            },
+                            {
+                              "range": {
+                                "min": 400000,
+                                "max": 1000000.99
+                              },
+                              "earn_rate": 0.02
+                            },
+                            {
+                              "range": {
+                                "min": 1000001,
+                                "max": 2000000.99
+                              },
+                              "earn_rate": 0.02
+                            },
+                            {
+                              "range": {
+                                "min": 2000001,
+                                "max": 3000000.99
+                              },
+                              "earn_rate": 0.02
+                            },
+                            {
+                              "range": {
+                                "min": 3000001,
+                                "max": 4000000.99
+                              },
+                              "earn_rate": 0.02
+                            },
+                            {
+                              "range": {
+                                "min": 4000001,
+                                "max": 1000000000000000000
+                              },
+                              "earn_rate": 0.02
+                            }
+                          ]
+                        },
+                        "education_enrolment_fee": 0.16,
+                        "hospitality_fnb": 1,
+                        "education_services_fee": 0.16,
+                        "leasing_generic": 0.2,
+                        "retail_dining_entertainment": 0.4,
+                        "charity_red_crescent_general": 0,
+                        "hospitality_sports_facilities": 2,
+                        "retail_shopping": 0.4,
+                        "hospitality_generic": 0,
+                        "charity_reach_general": 0,
+                        "education_activities_fee": 0.16,
+                        "hospitality_farl": 0.33,
+                        "maintenance_instalment_payment": 0.4,
+                        "hospitality_sadiyat_club": 0.1
+                      },
+                      "burn_rate": {
+                        "hospitality_spa": 25,
+                        "education_miscellaneous_charges": 25,
+                        "sales_generic": 25,
+                        "leasing_community_facilities": 25,
+                        "maintenance_generic": 25,
+                        "point_transfer_internal": 1,
+                        "education_generic": 25,
+                        "sales_service_charges": 25,
+                        "education_term_fee": 25,
+                        "sales_instalment_payment": 25,
+                        "leasing_instalment_payment": 25,
+                        "hospitality_golf_course": 25,
+                        "charity_maan_general": 1,
+                        "leasing_services": 25,
+                        "education_enrolment_fee": 25,
+                        "hospitality_fnb": 25,
+                        "education_services_fee": 25,
+                        "leasing_generic": 25,
+                        "retail_dining_entertainment": 36.36,
+                        "charity_red_crescent_general": 1,
+                        "hospitality_sports_facilities": 25,
+                        "retail_shopping": 36.36,
+                        "hospitality_generic": 25,
+                        "charity_reach_general": 1,
+                        "education_activities_fee": 25,
+                        "hospitality_farl": 36.36,
+                        "maintenance_instalment_payment": 25,
+                        "hospitality_sadiyat_club": 25
+                      },
+                      "burn_threshold_aed": {
+                        "Retail": 1,
+                        "Hospitality": 1,
+                        "Sales": 1,
+                        "Point Transfer": 1,
+                        "Education": 1,
+                        "Leasing": 1,
+                        "Maintenance": 1,
+                        "Charity": 1
+                      },
+                      "tiers": [
+                        {
+                          "id": 1,
+                          "tier_code": 1,
+                          "tier_title": "Bronze",
+                          "range_from": 0,
+                          "range_to": 10000
+                        },
+                        {
+                          "id": 2,
+                          "tier_code": 2,
+                          "tier_title": "Silver",
+                          "range_from": 10000.01,
+                          "range_to": 25000
+                        },
+                        {
+                          "id": 3,
+                          "tier_code": 3,
+                          "tier_title": "Gold",
+                          "range_from": 25000.01,
+                          "range_to": 9999999999
+                        },
+                        {
+                          "id": 4,
+                          "tier_code": 4,
+                          "tier_title": "Platinum",
+                          "range_from": -1,
+                          "range_to": -1,
+                          "comment": "Invite Only"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "": {
+            "description": ""
+          }
+        },
+        "operationId": "get-getConfig",
+        "description": "This API will be used to return system configurations like:\n•\tEarn rates per business trigger\n•\tBurn rates per business trigger\n•\tMinimum threshold values to burn points per asset\n•\tTier slabs/brackets\n\nThis API needs to return points a user can earn against 1 AED for each asset/business trigger. This API also need to return the burn rate as well which means it needs to return number of points which will be burned against 1 AED per asset/business trigger.\nThis API also need to return minimum points threshold value in the form of AED value set at business trigger level. This is also mentioned in the sample payload below.\nThis API need to return the different tier slabs set up in the system like White, Silver, Gold along with its spending range in AED.\n"
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {
+      "Customer": {
+        "title": "Customer",
+        "type": "object",
+        "description": "",
+        "examples": [
+          {
+            "id": 142,
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": "alice.smith@gmail.com",
+            "dateOfBirth": "1997-10-31",
+            "emailVerified": true,
+            "signUpDate": "2019-08-24"
+          }
+        ],
+        "properties": {
+          "member_id": {
+            "type": "string",
+            "description": "Unique identifier for the given user."
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "format": "date",
+            "example": "1997-10-31"
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date",
+            "description": "The date that the user was created."
+          },
+          "mobile_number": {
+            "type": "string"
+          },
+          "external_user_id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "referee": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          },
+          "country_of_residence": {
+            "type": "string"
+          },
+          "registration_date": {
+            "type": "string"
+          },
+          "preferredLanguage": {
+            "type": "string"
+          },
+          "additional_info": {
+            "type": "array",
+            "items": {}
+          },
+          "lms_registration_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string"
+          },
+          "member_tier": {
+            "type": "string",
+            "enum": [
+              "Gold",
+              "Platinum",
+              "Silver",
+              "Bronze"
+            ]
+          },
+          "channel_id": {
+            "type": "string"
+          },
+          "lifetime_total_points": {
+            "type": "number"
+          },
+          "used_points": {
+            "type": "number"
+          },
+          "expired_points": {
+            "type": "number"
+          },
+          "points_expiring_next_month": {
+            "type": "number"
+          },
+          "lifetime_bonus_points": {
+            "type": "number"
+          },
+          "total_active_points": {
+            "type": "number"
+          },
+          "total_available_points": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "member_id",
+          "first_name",
+          "last_name",
+          "email"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "API Key - 1": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}
